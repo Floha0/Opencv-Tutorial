@@ -15,16 +15,18 @@ cv.waitKey(0) # 0 means wait indefinitely for a key press
 """
 Read Video
 
+"""
 # integer for webcam, string for video file
-# capture = cv.VideoCapture(0)   
-capture = cv.VideoCapture('Videos/dog.mp4')
+capture = cv.VideoCapture(0)   
+# capture = cv.VideoCapture('Videos/dog.mp4')
 
 while True:
     isTrue, frame = capture.read()
     # capture.read() returns 2 values, the first is a boolean if the frame is read correctly, the second is the frame itself
 
     if isTrue:
-        cv.imshow('Video', frame)
+        flip = cv.flip(frame, 1)
+        cv.imshow('Video', flip)
     else:
         break
 
@@ -33,4 +35,3 @@ while True:
 
 capture.release()
 cv.destroyAllWindows()
-"""
